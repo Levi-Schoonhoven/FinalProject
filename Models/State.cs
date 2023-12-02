@@ -9,8 +9,13 @@ namespace FinalProject.Models
         [Required(ErrorMessage = "Please enter a State Name.")]
         public string Name { get; set; }
         public string Description { get; set; }
-        [Required(ErrorMessage ="Please enter a direction")]
+        
         public string DirectionId { get; set; }
-        public Direction Direction { get; set; }
+        public Direction ?Direction { get; set; }
+
+        public string Slug =>
+        Name?.Replace(' ', '-').ToLower() + '-' + Description?.ToString();
     }
 }
+ 
+
