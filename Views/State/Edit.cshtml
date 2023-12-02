@@ -1,0 +1,35 @@
+﻿@model State
+
+@{
+    string title = ViewBag.Action + " State";
+    ViewBag.Title = title;
+}
+<h2>@ViewBag.Title</h2>
+
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DirectionId">Direction</label>
+        <select asp-for="DirectionId" class="form-control">
+            <option value="">Select a Direction</option>
+            @foreach (Direction x in ViewBag.Directions)
+            {
+                <option value="@x.DirectionId">@x.Name</option>
+            }
+        </select>
+    </div>
+    <input type="hidden" asp-for="StateId"/>
+
+    <button type="submit" class="btn btn-secondary">@ViewBag.Action</button>
+    <a asp-controller="Home" asp-action="Index"
+    class="btn btn-secondary">Cancel</a>
+</form>

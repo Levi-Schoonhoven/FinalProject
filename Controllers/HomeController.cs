@@ -2,6 +2,7 @@
 using FinalProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.Controllers
 {
@@ -17,7 +18,7 @@ namespace FinalProject.Controllers
 
         public IActionResult Index()
         {
-            var states = context.States.OrderBy(m=>m.Name).ToList();
+            var states = context.States.Include(m=>m.Direction).OrderBy(m=>m.Name).ToList();
             return View(states);
         }
 

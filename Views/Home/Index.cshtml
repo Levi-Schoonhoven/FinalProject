@@ -11,6 +11,7 @@
         <tr>
             <th>Name</th>
             <th>Description</th>
+            <th>Direction</th>
             <th></th>
         </tr>
     </thead>
@@ -20,6 +21,7 @@
             <tr>
                 <td>@state.Name</td>
                 <td>@state.Description</td>
+                <td>@state.Direction.Name</td>
                 <td>
                     <a asp-controller="State" asp-action="Edit"
                         asp-route-id="@state.StateId">Edit</a>
