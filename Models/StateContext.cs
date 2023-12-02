@@ -22,7 +22,7 @@ namespace FinalProject.Models
                     },
                      new State
                      {
-                         StateId = 1,
+                         StateId = 2,
                          Name = "Minnesota",
                          Description = "Description"
                      }

@@ -1,4 +1,5 @@
-﻿
+﻿using System.Linq;
+using FinalProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,16 +7,18 @@ namespace FinalProject.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private StateContext context {  get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(StateContext ctx)
         {
-            _logger = logger;
+            context = ctx;
         }
+       
 
         public IActionResult Index()
         {
-            return View();
+            var states = context.States.OrderBy(m=>m.Name).ToList();
+            return View(states);
         }
 
        
