@@ -3,6 +3,7 @@ using FinalProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using System.Net.Http.Headers;
 
 namespace FinalProject.Controllers
 {
@@ -22,9 +23,30 @@ namespace FinalProject.Controllers
             return View(states);
         }
 
-       
+        /*
+       public ViewResult Index(string activeDirec = "all")
+                                
+        {
+            ViewBag.ActiveDirec = activeDirec;
+            
+            List<Direction> directions = context.Directions.ToList();
+            //List<Filter> filters = context.Filter.ToList();
 
-       
-       
+            directions.Insert(0, new Direction
+            {
+                DirectionId = "all",
+                Name = "All"
+            });
+            ViewBag.Directions = directions;
+            IQueryable<Direction> query = context.Directions;
+            if (activeDirec != "all")
+                query = query.Where(
+                    d => d.DirectionId.ToLower() == activeDirec.ToLower());
+            var direct = query.ToList();
+            return View(direct);
+        }*/
+
+
+
     }
 }

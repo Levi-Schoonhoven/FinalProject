@@ -24,6 +24,14 @@ namespace FinalProject.Controllers
             var state = context.States.Find(id);
             return View(state);
         }
+        [HttpGet]
+        public IActionResult filter(int id)
+        {
+            ViewBag.Action = "filter";
+            ViewBag.Directions = context.Directions.OrderBy(x => x.Name).ToList();
+            var state = context.States.Find(id);
+            return View(state);
+        }
         [HttpPost]
         public IActionResult Edit(State state)
         {
@@ -59,6 +67,15 @@ namespace FinalProject.Controllers
                 context.SaveChanges();
                 return RedirectToAction("Index","Home");
             }
-        
+
+        public IActionResult List(String id = "All")
+        {
+            ViewBag.Direction = context.Directions.ToList();
+            ViewBag.SelectedDirection = id;
+            List<Direction> directions = context.Directions.Where(d =>d.Name == id).ToList();
+            return View(directions);
+
+        }
+
     }
 }

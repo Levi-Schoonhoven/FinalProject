@@ -1,0 +1,26 @@
+﻿@model List<Direction>
+
+
+@{
+    ViewBag.Title = "List";
+}<h1>Hail Marry</h1>
+<div>
+    @if(ViewBag.Directions != null){
+        foreach(Direction d in ViewBag.Directions)
+        {
+            <a asp-controller="State" asp-action="List"
+            asp-route-id="@d.Name">@d.Name</a><text>|</text>
+        }
+    }
+     <a asp-controller="State" asp-action="List"
+        asp-route-id="All">All</a>
+
+    @if(ViewBag.SelectedDirection == "All")
+    {
+        <h2>Alllll</h2>
+    }
+    else
+    {
+        <h2>@ViewBag.SelectedDirection</h2>
+    }
+</div>

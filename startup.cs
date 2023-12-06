@@ -4,12 +4,14 @@ using FinalProject.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 
 namespace FinalProject
 {
     public class startup
     {
-        public startup(IConfiguration configuration) {
+        public startup(IConfiguration configuration)
+        {
             Configuration = configuration;
 
         }
@@ -31,16 +33,17 @@ namespace FinalProject
 
 
             });
-            /*
+
+
+        }
+        public void Configure(IApplicationBuilder app)
+        {
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllersRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
+                endpoints.MapControllerRoute(
+                     name: "default",
+                     pattern: "{controller=Home}/{action=Index}/state/{activeDirec}");
             });
-            */
-            
         }
-
     }
 }
